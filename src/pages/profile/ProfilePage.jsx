@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import {
   FaUser,
   FaHistory,
@@ -17,6 +16,23 @@ function ProfilePage() {
     picture: profileImg,
   };
 
+  const [modal, setModal] = useState(null); // puede ser: 'informacion', 'cuenta', 'metodo'
+
+  // Formularios controlados
+  const [nombre, setNombre] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
+  const [username, setUsername] = useState("juan_perez");
+  const [password, setPassword] = useState("");
+  const [tarjeta, setTarjeta] = useState("**** **** **** 1234");
+
+  const closeModal = () => setModal(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Cambios guardados correctamente");
+    closeModal();
+  };
+
   return (
     <div className="flex min-h-screen">
       {/* Barra lateral */}
@@ -26,14 +42,10 @@ function ProfilePage() {
             <FaUser />
             <span>Mi Perfil</span>
           </div>
-          <Link to="/historial" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+          <div className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 cursor-pointer">
             <FaHistory />
             <span>Historial de compras</span>
-          </Link>
-          <Link to="/perfil" className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-            <FaUser />
-            <span>Mi Perfil</span>
-          </Link>
+          </div>
         </div>
       </aside>
 
@@ -42,39 +54,37 @@ function ProfilePage() {
         {/* Usuario */}
         <div className="flex items-center justify-between bg-gray-100 p-6 rounded-lg mb-6 shadow">
           <div>
-            <h2 className="text-xl font-bold">{user.name}</h2>
-            <p className="text-gray-600">{user.email}</p>
+            <h2 className="text-xl font-bold">{nombre}</h2>
+            <p className="text-gray-600">{email}</p>
           </div>
           <img
             src={user.picture}
-            alt="picture de perfil"
+            alt="Perfil"
             className="w-20 h-20 rounded-full object-cover border-2 border-blue-500"
           />
         </div>
 
         {/* Opciones de perfil */}
         <div className="space-y-4">
-          {/* Tu información */}
-          <Link
-            to="/perfil/informacion"
-            className="flex items-center justify-between bg-gray-100 p-4 rounded-lg hover:shadow"
+          <div
+            onClick={() => setModal("informacion")}
+            className="flex items-center justify-between bg-gray-100 p-4 rounded-lg hover:shadow cursor-pointer"
           >
             <div className="flex items-center space-x-4">
               <FaInfoCircle className="text-blue-600" />
               <div>
                 <h3 className="font-semibold">Tu información</h3>
                 <p className="text-sm text-gray-600">
-                  name del usuario y datos de identificación
+                  Nombre del usuario y datos de identificación
                 </p>
               </div>
             </div>
             <img src={flecha} alt="Flecha" className="w-4 h-4" />
-          </Link>
+          </div>
 
-          {/* Datos de la cuenta */}
-          <Link
-            to="/perfil/cuenta"
-            className="flex items-center justify-between bg-gray-100 p-4 rounded-lg hover:shadow"
+          <div
+            onClick={() => setModal("cuenta")}
+            className="flex items-center justify-between bg-gray-100 p-4 rounded-lg hover:shadow cursor-pointer"
           >
             <div className="flex items-center space-x-4">
               <FaCog className="text-blue-600" />
@@ -86,12 +96,11 @@ function ProfilePage() {
               </div>
             </div>
             <img src={flecha} alt="Flecha" className="w-4 h-4" />
-          </Link>
+          </div>
 
-          {/* Método de pago */}
-          <Link
-            to="/perfil/metodo-pago"
-            className="flex items-center justify-between bg-gray-100 p-4 rounded-lg hover:shadow"
+          <div
+            onClick={() => setModal("metodo")}
+            className="flex items-center justify-between bg-gray-100 p-4 rounded-lg hover:shadow cursor-pointer"
           >
             <div className="flex items-center space-x-4">
               <FaCreditCard className="text-blue-600" />
@@ -101,9 +110,92 @@ function ProfilePage() {
               </div>
             </div>
             <img src={flecha} alt="Flecha" className="w-4 h-4" />
-          </Link>
+          </div>
         </div>
       </main>
+
+      {/* MODALES */}
+      {modal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-lg w-full max-w-md">
+            <h2 className="text-xl font-bold mb-4">
+              {modal === "informacion"
+                ? "Editar Información Personal"
+                : modal === "cuenta"
+                ? "Editar Datos de Cuenta"
+                : "Editar Método de Pago"}
+            </h2>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {modal === "informacion" && (
+                <>
+                  <input
+                    type="text"
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                    className="w-full border p-2 rounded"
+                    placeholder="Nombre"
+                  />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full border p-2 rounded"
+                    placeholder="Email"
+                  />
+                </>
+              )}
+
+              {modal === "cuenta" && (
+                <>
+                  <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    className="w-full border p-2 rounded"
+                    placeholder="Nombre de usuario"
+                  />
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full border p-2 rounded"
+                    placeholder="Nueva contraseña"
+                  />
+                </>
+              )}
+
+              {modal === "metodo" && (
+                <>
+                  <input
+                    type="text"
+                    value={tarjeta}
+                    onChange={(e) => setTarjeta(e.target.value)}
+                    className="w-full border p-2 rounded"
+                    placeholder="Número de tarjeta"
+                  />
+                </>
+              )}
+
+              <div className="flex justify-end space-x-2">
+                <button
+                  type="button"
+                  onClick={closeModal}
+                  className="px-4 py-2 bg-gray-300 rounded"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-blue-600 text-white rounded"
+                >
+                  Guardar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

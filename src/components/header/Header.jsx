@@ -50,7 +50,7 @@ function Header() {
           <Link to="/categorias" className="text-white hover:underline">
             Categorías
           </Link>
-          <Link to="/Puntos_venta" className="text-white hover:underline">
+          <Link to="/puntos-de-venta" className="text-white hover:underline">
             Puntos de venta
           </Link>
           <Link to="/carrito" className="text-white hover:underline">

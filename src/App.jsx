@@ -5,7 +5,8 @@ import ProductPage from './pages/products/ProductPage';
 import CategoriesPage from './pages/categories/CategoriesPage';
 import CartPage from './pages/cart/CartPage.jsx';
 import PerfilPage from './pages/profile/ProfilePage.jsx';
-import HistoryPage from './pages/HistorySales/HistoryPage.jsx'; // NUEVA IMPORTACIÓN
+import HistoryPage from './pages/HistorySales/HistoryPage'; 
+import PointsOfSalePage from './pages/pointsOfSale/PointsOfSalePage'; 
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="carrito" element={<CartPage />} />
         <Route path="perfil" element={<PerfilPage />} />
         <Route path="historial" element={<HistoryPage />} /> {/* NUEVA RUTA */}
+        <Route path="puntos-de-venta" element={<PointsOfSalePage />} /> {/* NUEVA RUTA */}
       </Route>
     </Routes>
   );
