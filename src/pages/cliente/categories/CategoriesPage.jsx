@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import mockProducts from "../../data/mockProducts";
+import mockProducts from "../../../data/mockProducts";
 
 function CategoriesPage() {
   const [selectedCategory, setSelectedCategory] = useState("todos");

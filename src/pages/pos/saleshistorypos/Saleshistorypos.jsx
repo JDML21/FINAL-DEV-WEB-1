@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaUser, FaHistory, FaSearch, FaFileDownload } from "react-icons/fa";
-import { useCart } from "../../context/CartContext";
+import { useCart } from "../../../context/CartContext";
 
-function HistoryPage() {
+function SalesHistory() {
   const [search, setSearch] = useState("");
   const { purchaseHistory } = useCart();
 
-  // Filtrar el historial según la búsqueda, validando que "products" exista
-  const filteredHistory = purchaseHistory?.filter((pedido) =>
-    pedido.products?.some((product) =>
+  const filteredSales = purchaseHistory?.filter((venta) =>
+    venta.products?.some((product) =>
       product.name.toLowerCase().includes(search.toLowerCase())
     )
   ) || [];
@@ -21,14 +20,14 @@ function HistoryPage() {
         <div className="space-y-6">
           <div className="flex items-center space-x-2 text-blue-600 font-semibold text-lg">
             <FaUser />
-            <span>Mi Perfil</span>
+            <span>POS</span>
           </div>
           <Link
-            to="/historial"
+            to="/ventas"
             className="flex items-center space-x-2 text-gray-700 hover:text-blue-600"
           >
             <FaHistory />
-            <span>Historial de compras</span>
+            <span>Historial de ventas</span>
           </Link>
           <Link
             to="/perfil"
@@ -42,7 +41,7 @@ function HistoryPage() {
 
       {/* Contenido */}
       <main className="flex-1 p-8 bg-white">
-        <h2 className="text-2xl font-bold mb-6">Historial de Compras</h2>
+        <h2 className="text-2xl font-bold mb-6">Historial de Ventas</h2>
 
         {/* Filtros */}
         <div className="flex flex-wrap items-center gap-4 mb-8">
@@ -70,21 +69,21 @@ function HistoryPage() {
           </button>
         </div>
 
-        {/* Lista de pedidos */}
+        {/* Lista de ventas */}
         <div className="space-y-6">
-          {filteredHistory.length > 0 ? (
-            filteredHistory.map((pedido) => (
+          {filteredSales.length > 0 ? (
+            filteredSales.map((venta) => (
               <div
-                key={pedido.id}
+                key={venta.id}
                 className="bg-gray-100 p-6 rounded-lg shadow flex flex-col gap-2"
               >
                 <p className="text-sm text-gray-600 mb-1">
-                  Fecha: {pedido.date}
+                  Fecha: {venta.date}
                 </p>
                 <div className="flex gap-6">
                   <img
-                    src={pedido.products?.[0]?.image || "/placeholder.jpg"}
-                    alt={pedido.products?.[0]?.name || "Producto"}
+                    src={venta.products?.[0]?.image || "/placeholder.jpg"}
+                    alt={venta.products?.[0]?.name || "Producto"}
                     className="w-32 h-32 object-cover rounded border"
                   />
                   <div className="flex-1">
@@ -92,25 +91,25 @@ function HistoryPage() {
                       <span className="font-semibold">Estado: </span>
                       <span
                         className={`${
-                          pedido.status === "Pendiente"
+                          venta.status === "Pendiente"
                             ? "text-yellow-600"
-                            : pedido.status === "En camino"
+                            : venta.status === "En camino"
                             ? "text-green-600"
                             : "text-red-600"
                         } font-semibold`}
                       >
-                        {pedido.status}
+                        {venta.status}
                       </span>
                     </div>
                     <p className="text-gray-700 mb-4">
-                      {pedido.products?.[0]?.description || "Sin descripción"}
+                      {venta.products?.[0]?.description || "Sin descripción"}
                     </p>
                     <div className="flex gap-4">
                       <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                        Ver compra
+                        Ver venta
                       </button>
                       <button className="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400">
-                        Volver a comprar
+                        Repetir venta
                       </button>
                     </div>
                   </div>
@@ -118,7 +117,7 @@ function HistoryPage() {
               </div>
             ))
           ) : (
-            <p className="text-gray-500">No hay historial de compras.</p>
+            <p className="text-gray-500">No hay historial de ventas.</p>
           )}
         </div>
       </main>
@@ -126,4 +125,4 @@ function HistoryPage() {
   );
 }
 
-export default HistoryPage;
+export default SalesHistory;

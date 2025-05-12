@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Header() {
+function POSHeader() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearchChange = (e) => {
@@ -21,7 +21,7 @@ function Header() {
       <div className="container mx-auto px-4">
         {/* Nombre de la app */}
         <div className="flex justify-start mb-4">
-          <Link to="/" className="text-2xl font-bold text-white">
+          <Link to="/pos" className="text-2xl font-bold text-white">
             FoodCampus
           </Link>
         </div>
@@ -45,22 +45,19 @@ function Header() {
           </form>
         </div>
 
-        {/* Navegación */}
+        {/* Navegación POS */}
         <nav className="flex justify-center space-x-6">
-          <Link to="/categorias" className="text-white hover:underline">
-            Categorías
+          <Link to="/pos/inventario" className="text-white hover:underline">
+            Inventario
           </Link>
-          <Link to="/puntos-de-venta" className="text-white hover:underline">
-            Puntos de venta
+          <Link to="/pos/ventas" className="text-white hover:underline">
+            Ventas
           </Link>
-          <Link to="/carrito" className="text-white hover:underline">
-            Carrito de Compras
+          <Link to="/pos/historial" className="text-white hover:underline">
+            Historial de Ventas
           </Link>
-          <Link to="/historial" className="text-white hover:underline">
-            Historial
-          </Link>
-          <Link to="/perfil" className="text-white hover:underline">
-            Mi Perfil
+          <Link to="/pos/perfil" className="text-white hover:underline">
+            Perfil
           </Link>
         </nav>
       </div>
@@ -68,4 +65,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default POSHeader;

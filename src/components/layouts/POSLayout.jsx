@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../cliente/header/Header";
-import Footer from "../cliente/footer/Footer"; 
+import Header from "../pos/header/Header";
+import Footer from "../pos/footer/Footer"; 
 import { Outlet } from "react-router-dom";
 
 function ClientLayout() {

@@ -1,4 +1,4 @@
-import ProductCard from '../../../components/productcard/ProductCard';
+import ProductCard from '../../../components/cliente/productcard/ProductCard';
 import mockProducts from '../../../data/mockProducts';
 const FeaturedProducts = () => {
   // Opcional: filtrar si solo algunos son "destacados"
@@ -20,5 +20,6 @@ const FeaturedProducts = () => {
     </section>
   );
 };
+
 
 export default FeaturedProducts;

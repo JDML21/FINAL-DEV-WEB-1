@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useCart } from '../../context/CartContext';
-import mockProducts from '../../data/mockProducts';
+import { useCart } from '../../../context/CartContext';
+import mockProducts from '../../../data/mockProducts';
 
 const ProductPage = () => {
   const { id } = useParams();
