@@ -10,7 +10,7 @@ function CallToAction() {
           sin esperar largas filas.
         </p>
         <Link
-          to="/categorias"
+          to="/client/categorias"
           className="bg-white text-secondary px-6 py-3 rounded-md font-medium hover:bg-gray-100 inline-block"
         >
           Explorar Ahora

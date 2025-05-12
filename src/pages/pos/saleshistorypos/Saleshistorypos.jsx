@@ -23,14 +23,14 @@ function SalesHistory() {
             <span>POS</span>
           </div>
           <Link
-            to="/ventas"
+            to="/pos/historial"
             className="flex items-center space-x-2 text-gray-700 hover:text-blue-600"
           >
             <FaHistory />
             <span>Historial de ventas</span>
           </Link>
           <Link
-            to="/perfil"
+            to="/pos/perfil"
             className="flex items-center space-x-2 text-gray-700 hover:text-blue-600"
           >
             <FaUser />

@@ -55,7 +55,7 @@ const Inventorypospage = () => {
   };
 
   const handleAddNewProduct = () => {
-    navigate("/productos/agregar");
+    navigate("/pos/productos/agregar");
   };
 
   const handleViewProduct = (id) => {

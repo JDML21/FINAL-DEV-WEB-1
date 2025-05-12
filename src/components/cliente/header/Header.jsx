@@ -21,7 +21,7 @@ function Header() {
       <div className="container mx-auto px-4">
         {/* Nombre de la app */}
         <div className="flex justify-start mb-4">
-          <Link to="/" className="text-2xl font-bold text-white">
+          <Link to="/client" className="text-2xl font-bold text-white">
             FoodCampus
           </Link>
         </div>

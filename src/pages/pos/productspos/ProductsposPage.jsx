@@ -36,7 +36,7 @@ const ProducsposPage = () => {
 
           <div className="flex space-x-4 mt-4">
             <button
-              onClick={() => navigate(`/pos/modificar/${product.id}`)}
+              onClick={() => navigate(`/pos/products/modificar/${product.id}`)}
               className="px-6 py-2 rounded text-white bg-yellow-500 hover:bg-yellow-600 transition"
             >
               Modificar

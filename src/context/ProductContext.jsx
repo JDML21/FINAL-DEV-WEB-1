@@ -1,6 +1,5 @@
-// src/context/ProductContext.jsx
 import { createContext, useContext, useState } from "react";
-import mockProducts from "../data/mockProducts"; // asegúrate de importar desde donde esté
+import mockProducts from "../data/mockProducts";
 
 const ProductContext = createContext();
 
@@ -10,13 +9,13 @@ export const ProductProvider = ({ children }) => {
   const updateProduct = (id, updatedFields) => {
     setProducts((prev) =>
       prev.map((prod) =>
-        prod.id === id ? { ...prod, ...updatedFields } : prod
+        prod.id.toString() === id.toString() ? { ...prod, ...updatedFields } : prod
       )
     );
   };
 
   const getProductById = (id) => {
-    return products.find((p) => p.id === id);
+    return products.find((p) => p.id.toString() === id.toString());
   };
 
   return (
@@ -26,4 +25,10 @@ export const ProductProvider = ({ children }) => {
   );
 };
 
-export const useProductContext = () => useContext(ProductContext);
+export const useProductContext = () => {
+  const context = useContext(ProductContext);
+  if (!context) {
+    throw new Error("useProductContext debe usarse dentro de un ProductProvider");
+  }
+  return context;
+};

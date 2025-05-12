@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const ProductCard = ({ product }) => {
   return (
     <div className="bg-white rounded-lg shadow-md p-4 flex flex-col">
-      <Link to={`/product/${product.id}`}>
+      <Link to={`/client/product/${product.id}`}>
         <img
           src={product.image_url}
           alt={product.name}

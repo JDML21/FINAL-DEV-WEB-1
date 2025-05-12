@@ -6,8 +6,6 @@ function Editproductpage() {
   const { id } = useParams();
   const { getProductById, updateProduct } = useProductContext();
 
-  
-
   // Estado local para el producto
   const [localProduct, setLocalProduct] = useState(null);
   const [campoEditando, setCampoEditando] = useState(null);
@@ -16,12 +14,13 @@ function Editproductpage() {
   // Obtener el producto cuando el id cambie
   useEffect(() => {
     const product = getProductById(id);
+    console.log("Producto encontrado:", product); // Para depuración
     if (product) {
       setLocalProduct(product);
     }
   }, [id, getProductById]);
 
-  if (!localProduct) return <p>Producto no encontrado</p>;
+  if (!localProduct) return <p>Producto no encontrado (ID: {id})</p>;
 
   const handleEditar = (campo) => {
     setCampoEditando(campo);
@@ -47,9 +46,9 @@ function Editproductpage() {
     <div style={{ padding: "2rem", maxWidth: "800px", margin: "0 auto" }}>
       {/* Encabezado */}
       <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-        <img src={localProduct.imagen} alt="Producto" width={80} height={80} />
+        <img src={localProduct.image_url} alt="Producto" width={80} height={80} />
         <div>
-          <h2 style={{ margin: 0 }}>{localProduct.nombre}</h2>
+          <h2 style={{ margin: 0 }}>{localProduct.name}</h2>
           <p style={{ color: "gray" }}>ID: {localProduct.id}</p>
         </div>
       </div>
@@ -65,11 +64,11 @@ function Editproductpage() {
         }}
       >
         {[
-          { label: "Nombre", campo: "nombre" },
-          { label: "Descripción", campo: "descripcion" },
-          { label: "Cantidad disponible", campo: "cantidad" },
-          { label: "Precio", campo: "precio" },
-          { label: "Imagen", campo: "imagen" },
+          { label: "Nombre", campo: "name" },
+          { label: "Descripción", campo: "description" },
+          { label: "Cantidad disponible", campo: "stock" },
+          { label: "Precio", campo: "price" },
+          { label: "Imagen", campo: "image_url" },
         ].map(({ label, campo }) => (
           <div
             key={campo}

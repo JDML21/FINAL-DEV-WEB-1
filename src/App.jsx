@@ -15,6 +15,7 @@ import POSHomePage from "./pages/pos/homepagespos/POSHomepage.jsx";
 import Profilepagepos from "./pages/pos/profilePos/Profilepagepos.jsx";
 import Saleshistorypos from "./pages/pos/saleshistorypos/Saleshistorypos.jsx";
 import Sales from "./pages/pos/sales/Salespos.jsx";
+import Newproduct from "./pages/pos/Newproduct/Newprorduct.jsx";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="products/modificar/:id" element={<Editproductpage />} />
         <Route path="historial" element={<Saleshistorypos />} />
         <Route path="ventas" element={<Sales />} />
+        <Route path="productos/agregar" element={<Newproduct />} />
       
         {/* <Route path="ventas" element={<VentasPage />} /> */}
       </Route>

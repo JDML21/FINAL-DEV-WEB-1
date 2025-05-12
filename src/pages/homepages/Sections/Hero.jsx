@@ -13,10 +13,10 @@ function Hero() {
             pedidos de forma rápida y sencilla.
           </p>
           <div className="flex flex-wrap gap-2">
-            <Link to="/categorias" className="bg-white text-primary px-6 py-2 rounded-md font-medium hover:bg-gray-100">
+            <Link to="/client/categorias" className="bg-white text-primary px-6 py-2 rounded-md font-medium hover:bg-gray-100">
               Ver Categorías
             </Link>
-            <Link to="/puntos-venta" className="bg-white text-primary px-6 py-2 rounded-md font-medium hover:bg-gray-100">
+            <Link to="/client/puntos-venta" className="bg-white text-primary px-6 py-2 rounded-md font-medium hover:bg-gray-100">
               Puntos de Venta
             </Link>
           </div>
