@@ -4,9 +4,9 @@ import CallToAction from "./Sections/CallToAction";
 
 function HomePage() {
   return (
-    <div>
+    <div className="pt-16"> {/* Añadido pt-16 para compensar el header fijo */}
       <Hero />
-      <FeaturedProduct />
+    
       <CallToAction />
     </div>
   );

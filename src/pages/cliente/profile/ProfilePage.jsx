@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
-  FaUser,
-  FaHistory,
   FaCreditCard,
   FaInfoCircle,
   FaCog,
@@ -34,91 +32,87 @@ function ProfilePage() {
   };
 
   return (
-    <div className="flex min-h-screen">
-      {/* Barra lateral */}
-      <aside className="w-64 bg-gray-100 p-6 border-r">
-        <div className="space-y-6">
-          <div className="flex items-center space-x-2 text-blue-600 font-semibold text-lg">
-            <FaUser />
-            <span>Mi Perfil</span>
-          </div>
-          <div className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 cursor-pointer">
-            <FaHistory />
-            <span>Historial de compras</span>
-          </div>
-        </div>
-      </aside>
-
-      {/* Contenido principal */}
-      <main className="flex-1 p-8 bg-white">
-        {/* Usuario */}
-        <div className="flex items-center justify-between bg-gray-100 p-6 rounded-lg mb-6 shadow">
-          <div>
-            <h2 className="text-xl font-bold">{nombre}</h2>
-            <p className="text-gray-600">{email}</p>
-          </div>
-          <img
-            src={user.picture}
-            alt="Perfil"
-            className="w-20 h-20 rounded-full object-cover border-2 border-blue-500"
-          />
+    <div className="pt-20 min-h-screen bg-gray-50 p-6">
+      <div className="max-w-4xl mx-auto">
+        {/* Encabezado */}
+        <div className="mb-8 text-center">
+          <h1 className="text-2xl font-bold text-gray-800 mb-2">Mi Perfil</h1>
+          <p className="text-gray-600 max-w-md mx-auto">
+            Administra tu información personal y configuración de cuenta
+          </p>
         </div>
 
-        {/* Opciones de perfil */}
-        <div className="space-y-4">
-          <div
-            onClick={() => setModal("informacion")}
-            className="flex items-center justify-between bg-gray-100 p-4 rounded-lg hover:shadow cursor-pointer"
-          >
-            <div className="flex items-center space-x-4">
-              <FaInfoCircle className="text-blue-600" />
-              <div>
-                <h3 className="font-semibold">Tu información</h3>
-                <p className="text-sm text-gray-600">
-                  Nombre del usuario y datos de identificación
-                </p>
-              </div>
+        {/* Contenido principal - reducido el ancho */}
+        <div className="bg-white rounded-lg shadow p-6 max-w-2xl mx-auto">
+          {/* Usuario */}
+          <div className="flex flex-col sm:flex-row items-center justify-between bg-gray-50 p-6 rounded-lg mb-6">
+            <div className="mb-4 sm:mb-0 text-center sm:text-left">
+              <h2 className="text-lg font-bold">{nombre}</h2>
+              <p className="text-gray-600 text-sm">{email}</p>
             </div>
-            <img src={flecha} alt="Flecha" className="w-4 h-4" />
+            <img
+              src={user.picture}
+              alt="Perfil"
+              className="w-16 h-16 rounded-full object-cover border-2 border-blue-500"
+            />
           </div>
 
-          <div
-            onClick={() => setModal("cuenta")}
-            className="flex items-center justify-between bg-gray-100 p-4 rounded-lg hover:shadow cursor-pointer"
-          >
-            <div className="flex items-center space-x-4">
-              <FaCog className="text-blue-600" />
-              <div>
-                <h3 className="font-semibold">Datos de la cuenta</h3>
-                <p className="text-sm text-gray-600">
-                  Datos que representan a la cuenta en la aplicación
-                </p>
+          {/* Opciones de perfil */}
+          <div className="space-y-3">
+            <div
+              onClick={() => setModal("informacion")}
+              className="flex items-center justify-between bg-gray-50 p-3 rounded-lg hover:shadow cursor-pointer transition-all"
+            >
+              <div className="flex items-center space-x-3">
+                <FaInfoCircle className="text-blue-600 text-lg" />
+                <div>
+                  <h3 className="font-medium">Tu información</h3>
+                  <p className="text-xs text-gray-600">
+                    Nombre del usuario y datos de identificación
+                  </p>
+                </div>
               </div>
+              <img src={flecha} alt="Flecha" className="w-3 h-3" />
             </div>
-            <img src={flecha} alt="Flecha" className="w-4 h-4" />
-          </div>
 
-          <div
-            onClick={() => setModal("metodo")}
-            className="flex items-center justify-between bg-gray-100 p-4 rounded-lg hover:shadow cursor-pointer"
-          >
-            <div className="flex items-center space-x-4">
-              <FaCreditCard className="text-blue-600" />
-              <div>
-                <h3 className="font-semibold">Método de pago</h3>
-                <p className="text-sm text-gray-600">Métodos de pago agregados</p>
+            <div
+              onClick={() => setModal("cuenta")}
+              className="flex items-center justify-between bg-gray-50 p-3 rounded-lg hover:shadow cursor-pointer transition-all"
+            >
+              <div className="flex items-center space-x-3">
+                <FaCog className="text-blue-600 text-lg" />
+                <div>
+                  <h3 className="font-medium">Datos de la cuenta</h3>
+                  <p className="text-xs text-gray-600">
+                    Datos que representan a la cuenta en la aplicación
+                  </p>
+                </div>
               </div>
+              <img src={flecha} alt="Flecha" className="w-3 h-3" />
             </div>
-            <img src={flecha} alt="Flecha" className="w-4 h-4" />
+
+            <div
+              onClick={() => setModal("metodo")}
+              className="flex items-center justify-between bg-gray-50 p-3 rounded-lg hover:shadow cursor-pointer transition-all"
+            >
+              <div className="flex items-center space-x-3">
+                <FaCreditCard className="text-blue-600 text-lg" />
+                <div>
+                  <h3 className="font-medium">Método de pago</h3>
+                  <p className="text-xs text-gray-600">Métodos de pago agregados</p>
+                </div>
+              </div>
+              <img src={flecha} alt="Flecha" className="w-3 h-3" />
+            </div>
           </div>
         </div>
-      </main>
+      </div>
 
       {/* MODALES */}
       {modal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg w-full max-w-md">
-            <h2 className="text-xl font-bold mb-4">
+          <div className="bg-white p-5 rounded-lg w-full max-w-sm mx-4">
+            <h2 className="text-lg font-bold mb-3">
               {modal === "informacion"
                 ? "Editar Información Personal"
                 : modal === "cuenta"
@@ -126,21 +120,21 @@ function ProfilePage() {
                 : "Editar Método de Pago"}
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3">
               {modal === "informacion" && (
                 <>
                   <input
                     type="text"
                     value={nombre}
                     onChange={(e) => setNombre(e.target.value)}
-                    className="w-full border p-2 rounded"
+                    className="w-full border p-2 rounded text-sm"
                     placeholder="Nombre"
                   />
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full border p-2 rounded"
+                    className="w-full border p-2 rounded text-sm"
                     placeholder="Email"
                   />
                 </>
@@ -152,14 +146,14 @@ function ProfilePage() {
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    className="w-full border p-2 rounded"
+                    className="w-full border p-2 rounded text-sm"
                     placeholder="Nombre de usuario"
                   />
                   <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full border p-2 rounded"
+                    className="w-full border p-2 rounded text-sm"
                     placeholder="Nueva contraseña"
                   />
                 </>
@@ -171,23 +165,23 @@ function ProfilePage() {
                     type="text"
                     value={tarjeta}
                     onChange={(e) => setTarjeta(e.target.value)}
-                    className="w-full border p-2 rounded"
+                    className="w-full border p-2 rounded text-sm"
                     placeholder="Número de tarjeta"
                   />
                 </>
               )}
 
-              <div className="flex justify-end space-x-2">
+              <div className="flex justify-end space-x-2 pt-2">
                 <button
                   type="button"
                   onClick={closeModal}
-                  className="px-4 py-2 bg-gray-300 rounded"
+                  className="px-3 py-1.5 bg-gray-200 rounded text-sm"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded"
+                  className="px-3 py-1.5 bg-blue-600 text-white rounded text-sm"
                 >
                   Guardar
                 </button>

@@ -15,30 +15,7 @@ function SalesHistory() {
 
   return (
     <div className="flex min-h-screen">
-      {/* Sidebar */}
-      <aside className="w-64 bg-gray-100 p-6 border-r">
-        <div className="space-y-6">
-          <div className="flex items-center space-x-2 text-blue-600 font-semibold text-lg">
-            <FaUser />
-            <span>POS</span>
-          </div>
-          <Link
-            to="/pos/historial"
-            className="flex items-center space-x-2 text-gray-700 hover:text-blue-600"
-          >
-            <FaHistory />
-            <span>Historial de ventas</span>
-          </Link>
-          <Link
-            to="/pos/perfil"
-            className="flex items-center space-x-2 text-gray-700 hover:text-blue-600"
-          >
-            <FaUser />
-            <span>Mi Perfil</span>
-          </Link>
-        </div>
-      </aside>
-
+   
       {/* Contenido */}
       <main className="flex-1 p-8 bg-white">
         <h2 className="text-2xl font-bold mb-6">Historial de Ventas</h2>

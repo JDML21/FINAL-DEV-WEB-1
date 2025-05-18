@@ -96,37 +96,43 @@ const Inventorypospage = () => {
           </select>
         </div>
 
-        {/* Acciones */}
-        <div className="flex flex-wrap justify-center gap-3">
-          {[{ label: "Pausar", color: "bg-gray-600", action: "pausar" },
-            { label: "Reactivar", color: "bg-blue-600", action: "reactivar" },
-            { label: "Eliminar", color: "bg-red-600", action: "eliminar" },
-            { label: "Modificar", color: "bg-yellow-500", action: "modificar" },
-          ].map(({ label, color, action }) => (
-            <button
-              key={action}
-              onClick={() => handleBulkAction(action)}
-              className={`${color} text-white px-4 py-2 rounded-lg shadow-md hover:scale-105 transition`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+   {/* Acciones */}
+{/* Contenedor principal */}
+<div className="flex justify-between items-center gap-3">
+  {/* Botones de la izquierda (4 acciones) */}
+  <div className="flex flex-wrap gap-3">
+    {[
+      { label: "Pausar", color: "bg-gray-600", action: "pausar" },
+      { label: "Reactivar", color: "bg-blue-600", action: "reactivar" },
+      { label: "Eliminar", color: "bg-red-600", action: "eliminar" },
+      { label: "Modificar", color: "bg-yellow-500", action: "modificar" },
+    ].map(({ label, color, action }) => (
+      <button
+        key={action}
+        onClick={() => handleBulkAction(action)}
+        className={`${color} text-white px-4 py-2 rounded-lg shadow-md hover:scale-105 transition`}
+      >
+        {label}
+      </button>
+    ))}
+  </div>
 
-        <div className="flex flex-wrap justify-center gap-3">
-          <button
-            onClick={handleDownloadInventory}
-            className="bg-green-600 text-white px-4 py-2 rounded-lg shadow-md hover:scale-105 transition"
-          >
-            Descargar Inventario
-          </button>
-          <button
-            onClick={handleAddNewProduct}
-            className="bg-teal-600 text-white px-4 py-2 rounded-lg shadow-md hover:scale-105 transition"
-          >
-            Agregar Producto
-          </button>
-        </div>
+  {/* Botones de la derecha (2 acciones) */}
+  <div className="flex flex-wrap gap-3">
+    <button
+      onClick={handleDownloadInventory}
+      className="bg-green-600 text-white px-4 py-2 rounded-lg shadow-md hover:scale-105 transition"
+    >
+      Descargar Inventario
+    </button>
+    <button
+      onClick={handleAddNewProduct}
+      className="bg-teal-600 text-white px-4 py-2 rounded-lg shadow-md hover:scale-105 transition"
+    >
+      Agregar Producto
+    </button>
+  </div>
+</div>
 
         {/* Lista de productos tipo cards */}
         <div className="space-y-4">
